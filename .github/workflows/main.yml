@@ -1,0 +1,25 @@
+name: Run Scripts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Run log_activity.py
+      run: python log_activity.py
+
+    - name: Run shutdown.py
+      run: python shutdown.py
